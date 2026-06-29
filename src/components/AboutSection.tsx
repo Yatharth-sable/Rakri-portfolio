@@ -12,8 +12,8 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 py-24 overflow-hidden"
-      style={{ background: '#09070A' }}
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 py-24 overflow-hidden transition-colors duration-300"
+      style={{ background: 'var(--bg-secondary)' }}
     >
       {/* Dynamic Background Glows for visual depth */}
       <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full blur-[150px] pointer-events-none opacity-10"
@@ -82,7 +82,7 @@ export default function AboutSection() {
               className="font-black uppercase tracking-tight text-center leading-none mb-6"
               style={{ fontSize: 'clamp(2.5rem, 7.5vw, 90px)' }}
             >
-              <span className="text-white">About </span>
+              <span className="text-[var(--text-primary)]">About </span>
               <span
                 style={{
                   background: 'linear-gradient(180deg, #B600A8 0%, #7621B0 100%)',
@@ -108,7 +108,7 @@ export default function AboutSection() {
           </FadeIn>
 
           <FadeIn delay={0.2} y={30}>
-            <p className="font-light text-[#D7E2EA] opacity-80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+            <p className="font-light text-[var(--text-secondary)] opacity-80 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
               We are a team of passionate designers and developers building modern, high-performance websites and digital experiences that help businesses grow online.
             </p>
           </FadeIn>
@@ -120,28 +120,28 @@ export default function AboutSection() {
           {/* Card 1: About Us (Purple) */}
           <FadeIn delay={0.25} y={40} className="w-full">
             <div
-              className="rounded-3xl p-6 sm:p-10 border flex flex-col justify-between h-full"
+              className="rounded-3xl p-6 sm:p-10 border flex flex-col justify-between h-full transition-colors duration-300"
               style={{
-                background: 'linear-gradient(135deg, rgba(24, 1, 31, 0.5) 0%, rgba(12, 12, 12, 0.8) 100%)',
+                background: 'var(--about-card-bg)',
                 borderColor: 'rgba(182, 0, 168, 0.15)',
                 backdropFilter: 'blur(20px)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(182, 0, 168, 0.05)',
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15), inset 0 0 20px var(--about-glow)',
               }}
             >
               <div>
                 <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#B600A8] mb-4 block">
                   About Us
                 </span>
-                <p className="text-lg sm:text-xl font-medium text-white leading-relaxed mb-8">
+                <p className="text-lg sm:text-xl font-medium text-[var(--text-primary)] leading-relaxed mb-8">
                   We build modern, high-performance websites that combine beautiful design, AI-powered features, and fast development.
                 </p>
               </div>
 
               {/* Three features list */}
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'rgba(215, 226, 234, 0.08)' }}>
+              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Fast Delivery */}
                 <div className="flex flex-col">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center border mb-3"
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center border mb-3 animate-pulse-slow"
                     style={{
                       borderColor: 'rgba(182, 0, 168, 0.25)',
                       background: 'rgba(182, 0, 168, 0.08)',
@@ -151,8 +151,8 @@ export default function AboutSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Fast Delivery</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">3–5 day delivery guarantee</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Fast Delivery</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">3–5 day delivery guarantee</span>
                 </div>
 
                 {/* Clean Code */}
@@ -167,8 +167,8 @@ export default function AboutSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Clean Code</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">Scalable, secure and optimized</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Clean Code</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">Scalable, secure and optimized</span>
                 </div>
 
                 {/* Support */}
@@ -183,8 +183,8 @@ export default function AboutSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.249-8.25-3.286z" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Reliable Support</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">30 days free support for every project</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Reliable Support</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">30 days free support for every project</span>
                 </div>
               </div>
             </div>
@@ -193,25 +193,25 @@ export default function AboutSection() {
           {/* Card 2: Our Vision (Cyan) */}
           <FadeIn delay={0.3} y={40} className="w-full">
             <div
-              className="rounded-3xl p-6 sm:p-10 border flex flex-col justify-between h-full"
+              className="rounded-3xl p-6 sm:p-10 border flex flex-col justify-between h-full transition-colors duration-300"
               style={{
-                background: 'linear-gradient(135deg, rgba(1, 28, 31, 0.4) 0%, rgba(12, 12, 12, 0.8) 100%)',
+                background: 'var(--vision-card-bg)',
                 borderColor: 'rgba(0, 216, 255, 0.15)',
                 backdropFilter: 'blur(20px)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 216, 255, 0.05)',
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15), inset 0 0 20px var(--vision-glow)',
               }}
             >
               <div>
                 <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#00D8FF] mb-4 block">
                   Our Vision
                 </span>
-                <p className="text-lg sm:text-xl font-medium text-white leading-relaxed mb-8">
+                <p className="text-lg sm:text-xl font-medium text-[var(--text-primary)] leading-relaxed mb-8">
                   To make world-class web design and AI technology accessible to businesses of every size.
                 </p>
               </div>
 
               {/* Three features list */}
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'rgba(215, 226, 234, 0.08)' }}>
+              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Innovate */}
                 <div className="flex flex-col">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center border mb-3"
@@ -225,8 +225,8 @@ export default function AboutSection() {
                       <circle cx="12" cy="13.625" r="3" stroke="currentColor" strokeWidth="2" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Innovate</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">We constantly explore new technologies</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Innovate</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">We constantly explore new technologies</span>
                 </div>
 
                 {/* Empower */}
@@ -241,8 +241,8 @@ export default function AboutSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584M18 18.72a5.97 5.97 0 00-.75-2.906" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Empower</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">We help businesses grow digitally</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Empower</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">We help businesses grow digitally</span>
                 </div>
 
                 {/* Impact */}
@@ -257,8 +257,8 @@ export default function AboutSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3" />
                     </svg>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-white mb-1">Impact</span>
-                  <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 font-light leading-snug">We create solutions that make a difference</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] mb-1">Impact</span>
+                  <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 font-light leading-snug">We create solutions that make a difference</span>
                 </div>
               </div>
             </div>
@@ -268,11 +268,11 @@ export default function AboutSection() {
         {/* Stats horizontal bar */}
         <FadeIn delay={0.35} y={30} className="w-full">
           <div
-            className="w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-xl flex flex-col md:flex-row items-center justify-around gap-8 md:gap-4"
+            className="w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-xl flex flex-col md:flex-row items-center justify-around gap-8 md:gap-4 transition-colors duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.01)',
-              borderColor: 'rgba(215, 226, 234, 0.08)',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.35)',
+              background: 'var(--card-bg)',
+              borderColor: 'var(--border-color)',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
             }}
           >
             {/* Stat 1 */}
@@ -288,13 +288,13 @@ export default function AboutSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-bold text-white leading-none mb-1">50+</span>
-                <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 tracking-widest uppercase font-medium">Projects Completed</span>
+                <span className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-none mb-1">50+</span>
+                <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 tracking-widest uppercase font-medium">Projects Completed</span>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[#D7E2EA]/15 to-transparent" />
+            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[var(--border-color)] to-transparent" />
 
             {/* Stat 2 */}
             <div className="flex items-center gap-4">
@@ -309,13 +309,13 @@ export default function AboutSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-bold text-white leading-none mb-1">100%</span>
-                <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 tracking-widest uppercase font-medium">Client Satisfaction</span>
+                <span className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-none mb-1">100%</span>
+                <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 tracking-widest uppercase font-medium">Client Satisfaction</span>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[#D7E2EA]/15 to-transparent" />
+            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[var(--border-color)] to-transparent" />
 
             {/* Stat 3 */}
             <div className="flex items-center gap-4">
@@ -330,13 +330,13 @@ export default function AboutSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-bold text-white leading-none mb-1">3–5 Days</span>
-                <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 tracking-widest uppercase font-medium">Average Delivery</span>
+                <span className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-none mb-1">3–5 Days</span>
+                <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 tracking-widest uppercase font-medium">Average Delivery</span>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[#D7E2EA]/15 to-transparent" />
+            <div className="hidden md:block w-[1px] h-8 bg-gradient-to-b from-transparent via-[var(--border-color)] to-transparent" />
 
             {/* Stat 4 */}
             <div className="flex items-center gap-4">
@@ -351,8 +351,8 @@ export default function AboutSection() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-bold text-white leading-none mb-1">30 Days</span>
-                <span className="text-[10px] sm:text-xs text-[#D7E2EA] opacity-60 tracking-widest uppercase font-medium">Free Support</span>
+                <span className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-none mb-1">30 Days</span>
+                <span className="text-[10px] sm:text-xs text-[var(--text-secondary)] opacity-60 tracking-widest uppercase font-medium">Free Support</span>
               </div>
             </div>
 

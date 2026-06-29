@@ -8,14 +8,44 @@
   padding: 0;
 }
 
+:root {
+  --bg-primary: #0C0C0C;
+  --bg-secondary: #09070A;
+  --bg-tertiary: #070708;
+  --text-primary: #FFFFFF;
+  --text-secondary: #D7E2EA;
+  --text-muted: rgba(215, 226, 234, 0.6);
+  --border-color: rgba(215, 226, 234, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  
+  --hero-grad-start: #646973;
+  --hero-grad-end: #BBCCD7;
+}
+
+html.light {
+  --bg-primary: #F5F7FA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #E9ECEF;
+  --text-primary: #0A0A0C;
+  --text-secondary: #343A40;
+  --text-muted: rgba(10, 10, 12, 0.6);
+  --border-color: rgba(10, 10, 12, 0.08);
+  --card-bg: rgba(0, 0, 0, 0.015);
+  
+  --hero-grad-start: #1A202C;
+  --hero-grad-end: #4A5568;
+}
+
 html, body, #root {
-  background: #0C0C0C;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: 'Kanit', sans-serif;
   scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  background: linear-gradient(180deg, var(--hero-grad-start) 0%, var(--hero-grad-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

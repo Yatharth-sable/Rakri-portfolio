@@ -28,14 +28,14 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative min-h-screen flex flex-col justify-center px-6 sm:px-10 md:px-16 py-24 sm:py-32 overflow-hidden border-t animate-fade-in"
-      style={{ background: '#0C0C0C', borderColor: 'rgba(215, 226, 234, 0.1)' }}
+      className="relative min-h-screen flex flex-col justify-center px-6 sm:px-10 md:px-16 py-24 sm:py-32 overflow-hidden border-t animate-fade-in transition-colors duration-300"
+      style={{ background: 'var(--bg-primary)', borderColor: 'var(--border-color)' }}
     >
       {/* Dynamic Background Glows */}
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full blur-[150px] pointer-events-none opacity-20"
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full blur-[150px] pointer-events-none opacity-10"
         style={{ background: 'radial-gradient(circle, #B600A8 0%, transparent 70%)' }} />
-      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full blur-[180px] pointer-events-none opacity-25"
-        style={{ background: 'radial-gradient(circle, #7621B0 0%, transparent 70%)' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full blur-[180px] pointer-events-none opacity-15"
+        style={{ background: 'radial-gradient(circle, #00D8FF 0%, transparent 70%)' }} />
 
       <div className="max-w-6xl mx-auto w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10">
@@ -55,8 +55,8 @@ export default function ContactSection() {
                 </h2>
               </FadeIn>
               <FadeIn delay={0.2} y={30}>
-                <p className="text-base sm:text-lg text-[#D7E2EA] font-light leading-relaxed mb-8 opacity-80 max-w-md">
-                  Have a striking project in mind or want to explore opportunities? Drop me a message or connect through my social channels. I'll get back to you as soon as possible.
+                <p className="text-base sm:text-lg text-[var(--text-secondary)] font-light leading-relaxed mb-8 opacity-80 max-w-md">
+                  Have a striking project in mind or want to explore opportunities? Drop us a message or connect through our social channels. We'll get back to you as soon as possible.
                 </p>
               </FadeIn>
             </div>
@@ -64,8 +64,8 @@ export default function ContactSection() {
             {/* Social links */}
             <div className="mt-8 lg:mt-16">
               <FadeIn delay={0.3} y={20}>
-                <h4 className="text-xs uppercase tracking-widest text-[#D7E2EA] opacity-40 font-semibold mb-5">
-                  Follow Me
+                <h4 className="text-xs uppercase tracking-widest text-[var(--text-muted)] opacity-60 font-semibold mb-5">
+                  Follow Us
                 </h4>
               </FadeIn>
               
@@ -76,8 +76,8 @@ export default function ContactSection() {
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[#D7E2EA] hover:text-white hover:bg-white/5"
-                    style={{ borderColor: 'rgba(215, 226, 234, 0.15)' }}
+                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5"
+                    style={{ borderColor: 'var(--border-color)' }}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
@@ -92,8 +92,8 @@ export default function ContactSection() {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[#D7E2EA] hover:text-white hover:bg-white/5"
-                    style={{ borderColor: 'rgba(215, 226, 234, 0.15)' }}
+                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5"
+                    style={{ borderColor: 'var(--border-color)' }}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" clipRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -108,8 +108,8 @@ export default function ContactSection() {
                     href="https://t.me"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[#D7E2EA] hover:text-white hover:bg-white/5"
-                    style={{ borderColor: 'rgba(215, 226, 234, 0.15)' }}
+                    className="flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5"
+                    style={{ borderColor: 'var(--border-color)' }}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.82-.67 3.86-.94 5.3-.11.61-.34.81-.56.83-.48.04-.84-.32-1.31-.62-.73-.48-1.14-.78-1.85-1.25-.82-.54-.29-.84.18-1.33.12-.13 2.26-2.07 2.3-2.25.01-.02.01-.11-.04-.15-.05-.04-.12-.03-.18-.01-.08.02-1.29.82-3.64 2.41-.34.24-.65.35-.93.34-.31-.01-.91-.18-1.36-.32-.55-.18-.99-.28-.95-.59.02-.16.24-.33.67-.51 2.62-1.14 4.37-1.89 5.25-2.25 2.5-1.02 3.02-1.2 3.36-1.2.07 0 .24.02.35.12.09.08.12.18.13.26-.01.07-.01.19-.02.26z" />
@@ -125,12 +125,12 @@ export default function ContactSection() {
           <div className="lg:col-span-7">
             <FadeIn delay={0.2} y={40} className="w-full">
               <div
-                className="relative rounded-3xl p-6 sm:p-10 border overflow-hidden"
+                className="relative rounded-3xl p-6 sm:p-10 border overflow-hidden transition-colors duration-300"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  borderColor: 'rgba(215, 226, 234, 0.08)',
+                  background: 'var(--card-bg)',
+                  borderColor: 'var(--border-color)',
                   backdropFilter: 'blur(20px)',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.3)',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.15)',
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -145,7 +145,7 @@ export default function ContactSection() {
                     >
                       {/* Name input */}
                       <div className="flex flex-col gap-2">
-                        <label htmlFor="name" className="text-xs uppercase tracking-wider text-[#D7E2EA] opacity-60 font-medium">
+                        <label htmlFor="name" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] opacity-60 font-medium">
                           Your Name
                         </label>
                         <input
@@ -156,17 +156,17 @@ export default function ContactSection() {
                           onChange={handleInputChange}
                           required
                           placeholder="Enter Name"
-                          className="px-5 py-4 rounded-xl border bg-transparent text-[#D7E2EA] font-light placeholder-[#D7E2EA]/30 transition-all duration-300 focus:outline-none focus:border-[#B600A8]"
+                          className="px-5 py-4 rounded-xl border bg-transparent text-[var(--text-primary)] font-light placeholder-[var(--text-muted)] transition-all duration-300 focus:outline-none focus:border-[#B600A8]"
                           style={{
-                            borderColor: 'rgba(215, 226, 234, 0.12)',
-                            background: 'rgba(255, 255, 255, 0.01)',
+                            borderColor: 'var(--border-color)',
+                            background: 'rgba(255, 255, 255, 0.005)',
                           }}
                         />
                       </div>
 
                       {/* Email input */}
                       <div className="flex flex-col gap-2">
-                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-[#D7E2EA] opacity-60 font-medium">
+                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] opacity-60 font-medium">
                           Your Email
                         </label>
                         <input
@@ -177,17 +177,17 @@ export default function ContactSection() {
                           onChange={handleInputChange}
                           required
                           placeholder="xyz@example.com"
-                          className="px-5 py-4 rounded-xl border bg-transparent text-[#D7E2EA] font-light placeholder-[#D7E2EA]/30 transition-all duration-300 focus:outline-none focus:border-[#B600A8]"
+                          className="px-5 py-4 rounded-xl border bg-transparent text-[var(--text-primary)] font-light placeholder-[var(--text-muted)] transition-all duration-300 focus:outline-none focus:border-[#B600A8]"
                           style={{
-                            borderColor: 'rgba(215, 226, 234, 0.12)',
-                            background: 'rgba(255, 255, 255, 0.01)',
+                            borderColor: 'var(--border-color)',
+                            background: 'rgba(255, 255, 255, 0.005)',
                           }}
                         />
                       </div>
 
                       {/* Message input */}
                       <div className="flex flex-col gap-2">
-                        <label htmlFor="message" className="text-xs uppercase tracking-wider text-[#D7E2EA] opacity-60 font-medium">
+                        <label htmlFor="message" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] opacity-60 font-medium">
                           Your Message
                         </label>
                         <textarea
@@ -198,10 +198,10 @@ export default function ContactSection() {
                           required
                           rows={5}
                           placeholder="Hello, I'd love to chat about..."
-                          className="px-5 py-4 rounded-xl border bg-transparent text-[#D7E2EA] font-light placeholder-[#D7E2EA]/30 transition-all duration-300 resize-none focus:outline-none focus:border-[#B600A8]"
+                          className="px-5 py-4 rounded-xl border bg-transparent text-[var(--text-primary)] font-light placeholder-[var(--text-muted)] transition-all duration-300 resize-none focus:outline-none focus:border-[#B600A8]"
                           style={{
-                            borderColor: 'rgba(215, 226, 234, 0.12)',
-                            background: 'rgba(255, 255, 255, 0.01)',
+                            borderColor: 'var(--border-color)',
+                            background: 'rgba(255, 255, 255, 0.005)',
                           }}
                         />
                       </div>
@@ -214,7 +214,7 @@ export default function ContactSection() {
                         whileTap={{ scale: 0.98 }}
                         className="mt-2 w-full py-4 rounded-xl text-white font-medium uppercase tracking-wider text-sm transition-all duration-300 hover:opacity-90 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                         style={{
-                          background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
+                          background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #00D8FF 100%)',
                           boxShadow: '0px 4px 10px rgba(181, 1, 167, 0.15)',
                         }}
                       >
@@ -245,16 +245,16 @@ export default function ContactSection() {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider mb-3">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] uppercase tracking-wider mb-3">
                         Message Sent!
                       </h3>
-                      <p className="text-sm sm:text-base text-[#D7E2EA] font-light leading-relaxed max-w-sm opacity-80 mb-8">
-                        Thank you for reaching out! I've received your message and will respond to you shortly.
+                      <p className="text-sm sm:text-base text-[var(--text-secondary)] font-light leading-relaxed max-w-sm opacity-80 mb-8">
+                        Thank you for reaching out! We've received your message and will respond to you shortly.
                       </p>
                       <button
                         onClick={() => setIsSubmitted(false)}
-                        className="px-6 py-2.5 rounded-full border text-xs sm:text-sm text-[#D7E2EA] uppercase tracking-wider hover:bg-white/5 transition-colors cursor-pointer"
-                        style={{ borderColor: 'rgba(215, 226, 234, 0.15)' }}
+                        className="px-6 py-2.5 rounded-full border text-xs sm:text-sm text-[var(--text-secondary)] uppercase tracking-wider hover:bg-white/5 transition-colors cursor-pointer"
+                        style={{ borderColor: 'var(--border-color)' }}
                       >
                         Send Another Message
                       </button>

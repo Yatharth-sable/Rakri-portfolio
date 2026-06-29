@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const row1 = [
   {
@@ -18,12 +18,12 @@ const row1 = [
   },
   {
     name: 'Next.js',
-    color: '#FFFFFF',
+    color: '#00D8FF',
     logo: (
       <svg className="w-20 h-20 overflow-visible" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="90" cy="90" r="87" fill="#000000" stroke="#FFFFFF" strokeWidth="6" />
-        <path d="M149.508 157.52L69.142 54H54V125.864H65.863V71.748L139.771 166.452C143.149 163.791 146.402 160.799 149.508 157.52Z" fill="#FFFFFF" />
-        <path d="M115 54H127V126H115V54Z" fill="#FFFFFF" />
+        <circle cx="90" cy="90" r="87" fill="var(--bg-primary)" stroke="var(--text-primary)" strokeWidth="6" style={{ transition: 'fill 0.4s ease, stroke 0.4s ease' }} />
+        <path d="M149.508 157.52L69.142 54H54V125.864H65.863V71.748L139.771 166.452C143.149 163.791 146.402 160.799 149.508 157.52Z" fill="var(--text-primary)" style={{ transition: 'fill 0.4s ease' }} />
+        <path d="M115 54H127V126H115V54Z" fill="var(--text-primary)" style={{ transition: 'fill 0.4s ease' }} />
       </svg>
     )
   },
@@ -95,7 +95,7 @@ const row2 = [
           <path d="M12 2L4 6.5v11L12 22l8-4.5v-11L12 2zm6 14.5l-6 3.4-6-3.4v-6.8l6-3.4 6 3.4v6.8z" fill="#339933"/>
           <path d="M12 6.5l4.5 2.6v5.2L12 16.9l-4.5-2.6V9.1L12 6.5z" fill="#83CD29"/>
         </g>
-        <text x="25" y="20" fill="#FFFFFF" fontSize="16" fontFamily="Kanit, sans-serif" fontWeight="900" letterSpacing="0.05em">node</text>
+        <text x="25" y="20" fill="var(--text-primary)" fontSize="16" fontFamily="Kanit, sans-serif" fontWeight="900" letterSpacing="0.05em" style={{ transition: 'fill 0.4s ease' }}>node</text>
       </svg>
     )
   },
@@ -104,7 +104,7 @@ const row2 = [
     color: '#E0E0E0',
     logo: (
       <svg className="w-24 h-16 overflow-visible" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="29" fill="#FFFFFF" fontSize="26" fontFamily="Kanit, sans-serif" fontWeight="900" letterSpacing="-0.02em">express</text>
+        <text x="0" y="29" fill="var(--text-primary)" fontSize="26" fontFamily="Kanit, sans-serif" fontWeight="900" letterSpacing="-0.02em" style={{ transition: 'fill 0.4s ease' }}>express</text>
       </svg>
     )
   },
@@ -115,7 +115,7 @@ const row2 = [
       <svg className="w-20 h-20 overflow-visible" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M375.9 157.9c-8.9-38.3-34.9-69-72.2-85.1-40.4-17.5-86.8-13.6-124 10.4-32.9 21.2-56.1 55.4-64 94.6-7.3 36.3 3.1 73 28.3 100.3l106-99.7 60.1 56.6-106 99.7c25.7 23.7 60 33.7 93.9 26.8 38.3-7.8 70-32.9 86.8-69.3 18.2-39.4 14.7-85.1-8.9-121.5l106 99.7c1.3-12.7.9-25.5-1.1-38z" fill="#764ABC" />
         <path d="M124.1 342.1c8.9 38.3 34.9 69 72.2 85.1 19.3 8.3 39.8 12.3 60.2 12.3 22 0 43.8-4.6 63.8-13.6 32.9-21.2 56.1-55.4 64-94.6 7.3-36.3-3.1-73-28.3-100.3l-106 99.7-60.1-56.6 106-99.7c-25.7-23.7-60-33.7-93.9-26.8-38.3 7.8-70 32.9-86.8 69.3-18.2 39.4-14.7 85.1 8.9 121.5l-106-99.7c-1.3 12.7-.9 25.5 1.1 38z" fill="#764ABC" opacity="0.85" />
-        <circle cx="250" cy="250" r="32" fill="#FFFFFF" />
+        <circle cx="250" cy="250" r="32" fill="var(--bg-primary)" style={{ transition: 'fill 0.4s ease' }} />
       </svg>
     )
   },
@@ -148,21 +148,14 @@ const row2 = [
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(200);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = window.scrollY + rect.top;
-      const newOffset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setOffset(newOffset);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Map the vertical scroll progress to horizontal offsets
+  const x1 = useTransform(scrollYProgress, [0, 1], [-250, 250]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [250, -250]);
 
   const quadrupled1 = [...row1, ...row1, ...row1, ...row1];
   const quadrupled2 = [...row2, ...row2, ...row2, ...row2];
@@ -170,33 +163,31 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden"
-      style={{ background: '#070708' }}
+      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden transition-colors duration-300"
+      style={{ background: 'var(--bg-tertiary)' }}
     >
       {/* Row 1 - moves right */}
-      <div
+      <motion.div
         className="flex gap-5 mb-5"
         style={{
-          transform: `translateX(${offset - 250}px)`,
-          willChange: 'transform',
+          x: x1,
         }}
       >
         {quadrupled1.map((tech, i) => (
           <motion.div
             key={`r1-${i}`}
-            className="flex flex-col items-center justify-center rounded-3xl flex-shrink-0 border cursor-pointer"
+            className="flex flex-col items-center justify-center rounded-3xl flex-shrink-0 border cursor-pointer transition-colors duration-300"
             whileHover={{
               scale: 1.03,
               borderColor: `${tech.color}45`,
-              boxShadow: `0 15px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px ${tech.color}15`,
+              boxShadow: `0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 20px ${tech.color}15`,
             }}
             style={{
               width: '320px',
               height: '200px',
-              background: `radial-gradient(circle at center, ${tech.color}0D 0%, #060608 85%)`,
-              borderColor: `${tech.color}18`,
-              boxShadow: `0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px ${tech.color}05`,
-              transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+              background: `radial-gradient(circle at center, ${tech.color}10 0%, var(--bg-secondary) 85%)`,
+              borderColor: 'var(--border-color)',
+              boxShadow: `0 8px 25px rgba(0, 0, 0, 0.1), inset 0 0 15px ${tech.color}05`,
             }}
           >
             {/* Logo wrapper with floating animation and soft background glow */}
@@ -210,7 +201,7 @@ export default function MarqueeSection() {
                 delay: (i % 6) * 0.18,
               }}
               style={{
-                filter: `drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px ${tech.color}40)`,
+                filter: `drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 8px ${tech.color}40)`,
               }}
             >
               {tech.logo}
@@ -218,9 +209,8 @@ export default function MarqueeSection() {
 
             {/* Sharp colored text */}
             <span
-              className="mt-5 uppercase font-bold tracking-[0.2em] text-sm"
+              className="mt-5 uppercase font-bold tracking-[0.2em] text-sm text-[var(--text-secondary)]"
               style={{
-                color: '#E2E8F0',
                 opacity: 0.9,
               }}
             >
@@ -228,32 +218,30 @@ export default function MarqueeSection() {
             </span>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Row 2 - moves left */}
-      <div
+      <motion.div
         className="flex gap-5"
         style={{
-          transform: `translateX(${-(offset - 250)}px)`,
-          willChange: 'transform',
+          x: x2,
         }}
       >
         {quadrupled2.map((tech, i) => (
           <motion.div
             key={`r2-${i}`}
-            className="flex flex-col items-center justify-center rounded-3xl flex-shrink-0 border cursor-pointer"
+            className="flex flex-col items-center justify-center rounded-3xl flex-shrink-0 border cursor-pointer transition-colors duration-300"
             whileHover={{
               scale: 1.03,
               borderColor: `${tech.color}45`,
-              boxShadow: `0 15px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px ${tech.color}15`,
+              boxShadow: `0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 20px ${tech.color}15`,
             }}
             style={{
               width: '320px',
               height: '200px',
-              background: `radial-gradient(circle at center, ${tech.color}0D 0%, #060608 85%)`,
-              borderColor: `${tech.color}18`,
-              boxShadow: `0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px ${tech.color}05`,
-              transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+              background: `radial-gradient(circle at center, ${tech.color}10 0%, var(--bg-secondary) 85%)`,
+              borderColor: 'var(--border-color)',
+              boxShadow: `0 8px 25px rgba(0, 0, 0, 0.1), inset 0 0 15px ${tech.color}05`,
             }}
           >
             {/* Logo wrapper with floating animation and soft glow */}
@@ -267,7 +255,7 @@ export default function MarqueeSection() {
                 delay: (i % 5) * 0.22,
               }}
               style={{
-                filter: `drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px ${tech.color}40)`,
+                filter: `drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 8px ${tech.color}40)`,
               }}
             >
               {tech.logo}
@@ -275,9 +263,8 @@ export default function MarqueeSection() {
 
             {/* Sharp colored text */}
             <span
-              className="mt-5 uppercase font-bold tracking-[0.2em] text-sm"
+              className="mt-5 uppercase font-bold tracking-[0.2em] text-sm text-[var(--text-secondary)]"
               style={{
-                color: '#E2E8F0',
                 opacity: 0.9,
               }}
             >
@@ -285,7 +272,7 @@ export default function MarqueeSection() {
             </span>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
