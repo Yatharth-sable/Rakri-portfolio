@@ -47,32 +47,34 @@ export default function ServicesSection() {
         {services.map((svc, i) => (
           <FadeIn key={svc.num} delay={i * 0.1} y={20}>
             <div
-              className="flex items-start gap-6 md:gap-10 py-8 sm:py-10 md:py-12"
+              className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-10 py-8 sm:py-10 md:py-12"
               style={{
                 borderTop: i === 0 ? '1px solid rgba(12,12,12,0.15)' : undefined,
                 borderBottom: '1px solid rgba(12,12,12,0.15)',
               }}
             >
+              {/* Responsive Service Index Number */}
               <span
                 className="font-black leading-none flex-shrink-0"
-                style={{ color: '#0C0C0C', fontSize: 'clamp(3rem, 10vw, 140px)' }}
+                style={{ color: '#0C0C0C', fontSize: 'clamp(2.2rem, 8vw, 120px)' }}
               >
                 {svc.num}
               </span>
-              <div className="flex flex-col justify-center pt-2 sm:pt-4 w-full">
+              
+              <div className="flex flex-col justify-center w-full">
                 <span
                   className="font-medium uppercase mb-3"
-                  style={{ color: '#0C0C0C', fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
+                  style={{ color: '#0C0C0C', fontSize: 'clamp(1rem, 2vw, 2.1rem)' }}
                 >
                   {svc.name}
                 </span>
                 
                 {/* Interactive Points Grid */}
-                <div className="flex flex-wrap gap-2.5  mt-1.5">
+                <div className="flex flex-wrap gap-2.5 mt-1">
                   {svc.points.map((pt, idx) => (
                     <span
                       key={idx}
-                      className="px-6 py-2 rounded-full text-sm sm:text-base font-light border transition-all duration-300 hover:bg-black/5 hover:scale-[1.02]"
+                      className="px-5 py-2 rounded-full text-xs sm:text-sm md:text-base font-light border transition-all duration-300 hover:bg-black/5 hover:scale-[1.02]"
                       style={{
                         borderColor: 'rgba(12, 12, 12, 0.12)',
                         color: '#0C0C0C',

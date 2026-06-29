@@ -138,7 +138,7 @@ export default function AboutSection() {
               </div>
 
               {/* Three features list */}
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Fast Delivery */}
                 <div className="flex flex-col">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center border mb-3 animate-pulse-slow"
@@ -211,7 +211,7 @@ export default function AboutSection() {
               </div>
 
               {/* Three features list */}
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 mt-8 pt-8 border-t" style={{ borderColor: 'var(--border-color)' }}>
                 {/* Innovate */}
                 <div className="flex flex-col">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center border mb-3"
@@ -268,7 +268,7 @@ export default function AboutSection() {
         {/* Stats horizontal bar */}
         <FadeIn delay={0.35} y={30} className="w-full">
           <div
-            className="w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-xl flex flex-col md:flex-row items-center justify-around gap-8 md:gap-4 transition-colors duration-300"
+            className="w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-xl grid grid-cols-2 md:flex md:flex-row items-center justify-around gap-8 md:gap-4 transition-colors duration-300"
             style={{
               background: 'var(--card-bg)',
               borderColor: 'var(--border-color)',

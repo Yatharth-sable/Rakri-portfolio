@@ -154,8 +154,9 @@ export default function MarqueeSection() {
   });
 
   // Map the vertical scroll progress to horizontal offsets
-  const x1 = useTransform(scrollYProgress, [0, 1], [-250, 250]);
-  const x2 = useTransform(scrollYProgress, [0, 1], [250, -250]);
+  // Using large negative offsets ensures we don't see empty space on the edges
+  const x1 = useTransform(scrollYProgress, [0, 1], ['-50%', '0%']);
+  const x2 = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
 
   const quadrupled1 = [...row1, ...row1, ...row1, ...row1];
   const quadrupled2 = [...row2, ...row2, ...row2, ...row2];

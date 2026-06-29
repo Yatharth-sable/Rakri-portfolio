@@ -67,32 +67,37 @@ function NavLink({ label, href, icon }: { label: string; href: string; icon: Rea
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative flex  items-center justify-center h-10 px-4.5 cursor-pointer overflow-hidden rounded-full transition-colors duration-200 hover:bg-white/5"
+      className="relative flex items-center justify-center h-10 w-9 sm:w-auto sm:px-4 cursor-pointer overflow-hidden rounded-full transition-colors duration-200 hover:bg-white/5"
     >
-      {/* Text layer - slides up on hover */}
-      <motion.span
-        animate={{
-          y: isHovered ? -35 : 0,
-          opacity: isHovered ? 0 : 1,
-        }}
-        transition={{ duration: 0.25, ease: 'easeInOut' }}
-        className="font-medium text-xs sm:text-sm uppercase tracking-wider select-none text-[var(--text-secondary)]"
-      >
-        {label}
-      </motion.span>
+      {/* Desktop sliding text/icon */}
+      <div className="hidden sm:flex items-center justify-center relative w-full h-full">
+        <motion.span
+          animate={{
+            y: isHovered ? -35 : 0,
+            opacity: isHovered ? 0 : 1,
+          }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
+          className="font-semibold text-xs uppercase tracking-wider select-none text-[var(--text-secondary)]"
+        >
+          {label}
+        </motion.span>
+        <motion.span
+          initial={{ y: 35, opacity: 0 }}
+          animate={{
+            y: isHovered ? 0 : 35,
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
+          className="absolute text-[var(--text-primary)]"
+        >
+          {icon}
+        </motion.span>
+      </div>
 
-      {/* Icon layer - slides up from bottom on hover */}
-      <motion.span
-        initial={{ y: 35, opacity: 0 }}
-        animate={{
-          y: isHovered ? 0 : 35,
-          opacity: isHovered ? 1 : 0,
-        }}
-        transition={{ duration: 0.25, ease: 'easeInOut' }}
-        className="absolute text-[var(--text-primary)]"
-      >
+      {/* Mobile static icon */}
+      <div className="flex sm:hidden items-center justify-center text-[var(--text-primary)]">
         {icon}
-      </motion.span>
+      </div>
     </a>
   );
 }
@@ -104,7 +109,7 @@ interface NavbarProps {
 
 export default function Navbar({ theme, toggleTheme }: NavbarProps) {
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2  rounded-full border transition-all duration-300 backdrop-blur-xl"
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-4 px-3 sm:px-6 py-2 rounded-full border transition-all duration-300 backdrop-blur-xl"
       style={{
         background: 'var(--card-bg)',
         borderColor: 'var(--border-color)',
@@ -112,7 +117,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
       }}
     >
       {/* Link Navigation List */}
-      <div className="flex items-center px-2 gap-4 ">
+      <div className="flex items-center px-1 sm:px-2 gap-1 sm:gap-4">
         {navLinks.map((link) => (
           <NavLink
             key={link.label}
@@ -124,21 +129,19 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
       </div>
 
       {/* Vertical Spacer */}
-      <div className="w-[1px] h-6  bg-[var(--border-color)]" />
+      <div className="w-[1px] h-6 bg-[var(--border-color)]" />
 
       {/* Day / Night Theme Toggle */}
       <button
         onClick={toggleTheme}
-        className="w-10 h-10  rounded-full flex items-center justify-center transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-[var(--border-color)] text-[var(--text-secondary)]"
+        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-[var(--border-color)] text-[var(--text-secondary)] cursor-pointer"
         aria-label="Toggle theme"
       >
         {theme === 'dark' ? (
-          // Moon Icon (Representing Dark Mode)
           <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
         ) : (
-          // Sun Icon (Representing Light Mode)
           <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m0 13.5V21M7.5 7.5l-1.5-1.5M18 18l-1.5-1.5m0-12l1.5-1.5M7.5 16.5L6 18M21 12h-2.25M5.25 12H3m9-5.25a5.25 5.25 0 110 10.5 5.25 5.25 0 010-10.5z" />
           </svg>

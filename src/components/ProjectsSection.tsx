@@ -190,9 +190,10 @@ function ProjectCard({
           ) : null}
         </div>
 
-        {/* Image grid - styled with height relative to viewport to prevent clipping */}
+        {/* Image grid - responsive layout (hides secondary column on mobile) */}
         <div className="flex gap-3 sm:gap-4 overflow-hidden w-full flex-grow">
-          <div className="flex flex-col gap-3 sm:gap-4" style={{ width: '40%' }}>
+          {/* Secondary images (hidden on mobile, flex-column on sm+) */}
+          <div className="hidden sm:flex flex-col gap-3 sm:gap-4" style={{ width: '40%' }}>
             <motion.img
               src={project.col1img1}
               alt=""
@@ -214,12 +215,14 @@ function ProjectCard({
               transition={{ duration: 0.65, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             />
           </div>
-          <div style={{ width: '60%' }} className="flex">
+          
+          {/* Main showcase image (takes 100% on mobile, 60% on sm+) */}
+          <div className="w-full sm:w-[60%] flex">
             <motion.img
               src={project.col2img}
               alt=""
               className="w-full object-cover object-top hover:scale-[1.02] transition-transform duration-300 flex-grow h-full"
-              style={{ height: 'clamp(240px, 50vh, 500px)', borderRadius }}
+              style={{ height: 'clamp(200px, 50vh, 500px)', borderRadius }}
               initial={{ opacity: 0, scale: 0.93, y: 22 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}

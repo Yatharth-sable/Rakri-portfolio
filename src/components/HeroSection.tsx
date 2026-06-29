@@ -7,14 +7,14 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="h-screen flex flex-col"
+      className="min-h-[100dvh] flex flex-col"
       style={{ overflowX: 'clip', position: 'relative' }}
     >
       {/* Spacer to push title down, replacing the old static navbar space */}
       <div className="h-20 sm:h-24 md:h-28" />
 
       {/* Hero Heading */}
-      <FadeIn delay={0.15} y={40} className="overflow-hidden w-full">
+      <FadeIn delay={0.15} y={40} className="overflow-hidden w-full relative z-10">
         <h1
           className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center mt-6 sm:mt-4"
           style={{ fontSize: 'clamp(7vw, 15.5vw, 10.5vw)' }}
